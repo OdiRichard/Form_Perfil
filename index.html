@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Formulário de Perfil</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Formulário de Perfil</h1>
+
+      <!-- =====================================
+             PARTE SUPERIOR
+        ====================================== -->
+
+      <div class="parte-superior">
+        <!-- FOTO -->
+        <div class="area-foto">
+          <div class="foto">
+            <img id="fotoPerfil" src="imagens/pp.jpg" alt="Foto do usuário" />
+          </div>
+
+          <button type="button" onclick="alterarFoto()">Alterar foto</button>
+        </div>
+
+        <!-- DADOS PESSOAIS -->
+        <div class="dados-pessoais">
+          <label for="nome"> Nome Completo </label>
+
+          <input type="text" id="nome" placeholder="Digite seu nome" />
+
+          <label for="idade"> Idade / Nascimento </label>
+
+          <input type="text" id="idade" placeholder="Digite sua idade" />
+
+          <label for="pai"> Nome do Pai </label>
+
+          <input type="text" id="pai" placeholder="Digite o nome do seu pai" />
+
+          <label for="mae"> Nome da Mãe </label>
+
+          <input type="text" id="mae" placeholder="Digite o nome da sua mãe" />
+        </div>
+
+        <!-- =====================================
+                 GAMES
+            ====================================== -->
+
+        <div class="preferencia">
+          <h2>Games</h2>
+
+          <select id="jogo" onchange="mudarImagem('jogo')">
+            <option value="">Selecione um jogo</option>
+
+            <option value="Ready or Not" data-imagem="imagens/ron.png">
+              Ready or Not
+            </option>
+
+            <option
+              value="Medal of Honor Frontline"
+              data-imagem="imagens/mohf.jpg"
+            >
+              Medal of Honor Frontline
+            </option>
+
+            <option value="Black" data-imagem="imagens/b.jpg">Black</option>
+
+            <option value="For Honor" data-imagem="imagens/fh.jpg">
+              For Honor
+            </option>
+          </select>
+
+          <div class="imagem-preferencia">
+            <img
+              id="imagemJogo"
+              src="imagens/sem-imagem.jpg"
+              alt="Imagem do jogo"
+            />
+          </div>
+        </div>
+
+        <!-- =====================================
+                 SÉRIES
+            ====================================== -->
+
+        <div class="preferencia">
+          <h2>Séries</h2>
+
+          <select id="serie" onchange="mudarImagem('serie')">
+            <option value="">Selecione uma série</option>
+
+            <option value="Demolidor" data-imagem="imagens/dd.jpg">
+              Demolidor
+            </option>
+
+            <option value="Série 2" data-imagem="imagens/p.jpeg">
+              Justiceiro
+            </option>
+          </select>
+
+          <div class="imagem-preferencia">
+            <img
+              id="imagemSerie"
+              src="imagens/sem-imagem.jpg"
+              alt="Imagem da série"
+            />
+          </div>
+        </div>
+
+        <!-- =====================================
+                 ANIMES
+            ====================================== -->
+
+        <div class="preferencia">
+          <h2>Animes</h2>
+
+          <select id="anime" onchange="mudarImagem('anime')">
+            <option value="">Selecione um anime</option>
+
+            <option value="Attack on Titan" data-imagem="imagens/aot.jpg">
+              Attack on Titan
+            </option>
+
+            <option value="Cyberpunk Edgerunners" data-imagem="imagens/cp.jpg">
+              Cyberpunk Edgerunners
+            </option>
+          </select>
+
+          <div class="imagem-preferencia">
+            <img
+              id="imagemAnime"
+              src="imagens/sem-imagem.jpg"
+              alt="Imagem do anime"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================
+             PARTE INFERIOR
+        ====================================== -->
+
+      <div class="parte-inferior">
+        <!-- TALENTOS -->
+
+        <div class="caixa">
+          <h2>Talentos / Conhecimentos</h2>
+
+          <label>
+            <input type="checkbox" name="talento" value="Programação" />
+            Programação
+          </label>
+
+          <label>
+            <input type="checkbox" name="talento" value="Edição" />
+            Edição
+          </label>
+
+          <label>
+            <input type="checkbox" name="talento" value="Desenho" />
+            Desenho
+          </label>
+
+          <label>
+            <input type="checkbox" name="talento" value="Música" />
+            Música
+          </label>
+
+          <label>
+            <input type="checkbox" name="talento" value="Games" />
+            Games
+          </label>
+        </div>
+
+        <!-- IDIOMAS -->
+
+        <div class="caixa">
+          <h2>Idiomas</h2>
+
+          <label>
+            <input type="checkbox" name="idioma" value="Português" />
+            Português
+          </label>
+
+          <label>
+            <input type="checkbox" name="idioma" value="Inglês" />
+            Inglês
+          </label>
+
+          <label>
+            <input type="checkbox" name="idioma" value="Alemão" />
+            Alemão
+          </label>
+
+          <label>
+            <input type="checkbox" name="idioma" value="Japonês" />
+            Japonês
+          </label>
+        </div>
+
+        <!-- CONHECIMENTOS EM TI -->
+
+        <div class="caixa conhecimentos">
+          <h2>Conhecimentos em TI</h2>
+
+          <textarea
+            id="conhecimentos"
+            maxlength="250"
+            placeholder="Digite seus conhecimentos em TI..."
+          ></textarea>
+
+          <div id="contador" class="contador">0 / 250</div>
+        </div>
+      </div>
+
+      <!-- =====================================
+             BOTÕES
+        ====================================== -->
+
+      <div class="botoes">
+        <button type="button" onclick="gerarPerfil()">Gerar</button>
+
+        <button type="button" onclick="limparFormulario()">Limpar</button>
+      </div>
+
+      <!-- =====================================
+             RESULTADO
+        ====================================== -->
+
+      <div id="resultado" class="resultado"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
